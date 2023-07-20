@@ -1,3 +1,6 @@
 [submodule "pymavlink"]
 	path = pymavlink
 	url = https://github.com/ardupilot/pymavlink.git
+[submodule "output-dialects/C"]
+	path = output-dialects/C
+	url = https://github.com/takamasanumuro/mavlink-arariboat.git
