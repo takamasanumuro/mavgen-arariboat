@@ -709,26 +709,22 @@
       <field type="uint8_t" name="system_status" enum="MAV_STATE">System status flag.</field>
       <field type="uint8_t_mavlink_version" name="mavlink_version">MAVLink version, not writable by user, gets added by protocol because of magic data type: uint8_t_mavlink_version</field>
     </message>
-    
-    <message id="170" name="CONTROL_SYSTEM">
-      <description> Bitfield that encodes whether the pumps are active or not.</description>
-      <field type="float" name="dac_output" units="V">Digital-Analog converter output to control the motor.</field>
-      <field type="float" name="potentiometer_signal" units="V">Potentiometer output to control the motor.</field>
-    </message>
-
+  
     <message id="171" name="INSTRUMENTATION">
       <description> Instrumentation data for 3 current sensors and 1 voltage sensor.</description>
-      <field type="float" name="battery_voltage" units ="V">Voltage sensor connected to A0 pin of ADS1115.</field>     
-      <field type="float" name="motor_current" units="A">Current sensor connected to A1 pin of ADS1115</field>
-      <field type="float" name="battery_current" units ="A">Current sensor connected to A2 pin of ADS1115.</field>
-      <field type="float" name="mppt_current" units ="A">Current sensor connected to A3 pin of ADS1115.</field>
+      <field type="float" name="battery_voltage" units ="V">.</field>     
+      <field type="float" name="motor_current_left" units="A"></field>
+      <field type="float" name="motor_current_right" units ="A"></field>
+      <field type="float" name="mppt_current" units ="A"></field>
+      <field type="uint32_t" name="timestamp">Timestamp.</field> 
     </message>
 
     <message id="172" name ="TEMPERATURES">
       <description> Temperature data for motor and MPPT.</description>
-      <field type="float" name="temperature_motor" units="degC">Motor temperature.</field>
-      <field type="float" name="temperature_battery" units ="degC">MPPT temperature.</field>
+      <field type="float" name="temperature_battery_left" units="degC">Left side of battery pack</field>
+      <field type="float" name="temperature_battery_right" units ="degC">Right side of battery pack</field>
       <field type="float" name="temperature_mppt" units ="degC">MPPT temperature.</field>
+      <field type="uint32_t" name="timestamp">Timestamp.</field>
     </message>
   
     <message id="173" name="GPS_INFO">
@@ -738,13 +734,30 @@
       <field type="float" name="speed" units="km/h">Speed</field>
       <field type="float" name="course" units="deg">Course</field>
       <field type="uint8_t" name="satellites_visible">Number of visible satellites</field>
+      <field type="uint32_t" name="timestamp">Timestamp.</field>
     </message>
 
-    <message id="174" name="AUX_SYSTEM">
-      <description> Data related to auxiliary battery and pumps. </description>
-      <field type="float" name="voltage">Voltage of auxiliary battery</field>
-      <field type="float" name="current">Current of auxiliary battery</field>
-      <field type="float" name="pumps">Bitfield that represents the logical state of the pumps</field>
+    <message id="174" name="RPM_INFO">
+      <description> RPM data from motors </description>
+      <field type="float" name="rpm_left">RPM value for left motor</field>
+      <field type="float" name="rpm_right">RPM value for right motor</field>
+      <field type="uint32_t" name="timestamp">Timestamp.</field>
+    </message>
+
+    <message id="175" name="ALL_INFO">
+      <description> All information from the system </description>
+      <field type="float" name="battery_voltage" units ="V">.</field>
+      <field type="float" name="motor_current_left" units="A"></field>
+      <field type="float" name="motor_current_right" units ="A"></field>
+      <field type="float" name="mppt_current" units ="A"></field>
+      <field type="float" name="temperature_battery_left" units="degC">Left side of battery pack</field>
+      <field type="float" name="temperature_battery_right" units ="degC">Right side of battery pack</field>
+      <field type="float" name="temperature_mppt" units ="degC">MPPT temperature.</field>
+      <field type="float" name="latitude">Latitude info. Sixth decimal digit represents 11cm resolution</field>
+      <field type="float" name="longitude">Longitude info. Sixth decimal digit represents 11cm resolution</field>
+      <field type="float" name="rpm_left">RPM value for left motor</field>
+      <field type="float" name="rpm_right">RPM value for right motor</field>
+      <field type="uint32_t" name="timestamp">Timestamp.</field>
     </message>
 
     <message id="300" name="PROTOCOL_VERSION">
